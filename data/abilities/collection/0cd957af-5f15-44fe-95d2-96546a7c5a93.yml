@@ -1,0 +1,14 @@
+---
+
+- id: 0cd957af-5f15-44fe-95d2-96546a7c5a93
+  name: Cleanup exfil dir
+  description: Cleanup exfil dir
+  tactic: collection
+  technique:
+    attack_id: T1005
+    name: Data from Local System
+  platforms:
+    linux:
+      sh:
+        command: |
+          rm -rf #{server.conf.exfil_dir}/*

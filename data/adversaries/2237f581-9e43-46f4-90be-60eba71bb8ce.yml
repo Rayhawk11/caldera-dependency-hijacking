@@ -1,0 +1,7 @@
+name: Dependency hijacking attack
+description: Execute dependency hijacking attack using exfiltrated requirements.txt
+atomic_ordering:
+- c623fb22-808a-4b2b-a193-64f2307568c9
+- 1a05db07-8fb0-4ea1-970c-f51cf8ce7e94
+id: 2237f581-9e43-46f4-90be-60eba71bb8ce
+objective: 495a9828-cab1-44dd-a0ca-66e58177d8cc

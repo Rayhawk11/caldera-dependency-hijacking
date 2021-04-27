@@ -1,0 +1,6 @@
+name: Gather requirements.txt
+description: Get and exfiltrate requirements.txt from a system
+atomic_ordering:
+- 8da17889-80d9-4ef1-aa7c-5f28e5a3bf65
+id: a380a9c6-4cc9-4770-bee8-3734a3457861
+objective: 495a9828-cab1-44dd-a0ca-66e58177d8cc

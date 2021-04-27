@@ -1,0 +1,13 @@
+- id: c623fb22-808a-4b2b-a193-64f2307568c9
+  name: Aggregate requirements.txt files
+  description: Aggregate requirements.txt files on control server
+  tactic: collection
+  technique:
+    attack_id: T1005
+    name: Data from Local System
+  platforms:
+    linux:
+      sh:
+        command: './requirements_aggregator.py #{server.conf.caldera_dir} #{server.conf.exfil_dir}'
+        payloads:
+        - requirements_aggregator.py
