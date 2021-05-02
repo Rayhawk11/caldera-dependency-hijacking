@@ -17,6 +17,7 @@ def main():
     output_file = f'{exfil_dir}/aggregated_requirements.txt'
     with open(output_file, 'w') as f:
         for file in file_list:
+            print(f'Starting decryption of exfiltrated file {file}')
             subprocess.check_output(['python3', decryptor_file, '--config', config_file, file])
             decrypted_file = file + '_decrypted'
             with open(decrypted_file) as f2:
