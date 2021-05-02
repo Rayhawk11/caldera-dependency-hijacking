@@ -1,8 +1,8 @@
 ---
 
 - id: 0cd957af-5f15-44fe-95d2-96546a7c5a93
-  name: Cleanup exfil dir
-  description: Cleanup exfil dir
+  name: Eliminate old requirements_files.txt
+  description: Add .bak prefix to existing requirements_files.txt to avoid reusing them
   tactic: collection
   technique:
     attack_id: T1005
@@ -10,5 +10,5 @@
   platforms:
     linux:
       sh:
-        command: |
-          rm -rf #{server.conf.exfil_dir}/*
+        command: "find #{server.conf.exfil_dir} -name 'requirements_files.txt' -execdir mv {} {}.bak ';' &&
+                 [ ! -f #{server.conf.exfil_dir}/aggregated_requirements.txt ] || mv #{server.conf.exfil_dir}/aggregated_requirements.txt #{server.conf.exfil_dir}/aggregated_requirements.txt.bak"
