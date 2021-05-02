@@ -9,7 +9,7 @@
   platforms:
     linux:
       sh:
-        command: "python3 attack_builder.py #{app.contact.http} #{server.conf.exfil_dir}/aggregated_requirements.txt #{server.dh.pypi_repo_name}"
+        command: "python3 attack_builder.py #{app.contact.http} #{app.contact.dns.socket} #{server.conf.exfil_dir}/aggregated_requirements.txt #{server.dh.pypi_repo_name}"
         payloads:
         - attack_builder.py
         - malicious-template.tar.gz

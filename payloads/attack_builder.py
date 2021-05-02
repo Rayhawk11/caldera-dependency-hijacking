@@ -20,11 +20,13 @@ def query_latest_version(project_name: str, endpoint: str = PYPI_SIMPLE_ENDPOINT
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('caldera_server')
+    parser.add_argument('caldera_http_server')
+    parser.add_argument('caldera_dns_server')
     parser.add_argument('requirements_file')
     parser.add_argument('pypi_repo_name')
     args = parser.parse_args()
-    caldera_server = args.caldera_server
+    caldera_http_server = args.caldera_http_server
+    caldera_dns_server = args.caldera_dns_server
     requirements_file = args.requirements_file
     pypi_repo_name = args.pypi_repo_name
     target_packages = set()
@@ -43,7 +45,8 @@ def main():
         os.makedirs(tmp_dir, exist_ok=True)
         subprocess.run(['tar', 'xf', template_tarball, '-C', tmp_dir])
         os.chdir(tmp_dir)
-        subprocess.run(['sed', '-i', f"s@server = 'placeholder'@server = '{caldera_server}'@g", 'setup.py'])
+        subprocess.run(['sed', '-i', f"s@caldera_http_server = 'placeholder'@caldera_http_server = '{caldera_http_server}'@g", 'setup.py'])
+        subprocess.run(['sed', '-i', f"s@caldera_dns_server = 'placeholder'@caldera_dns_server = '{caldera_dns_server}'@g", 'setup.py'])
         subprocess.run(['sed', '-i', f"s@package_name = 'placeholder'@package_name = '{target_package}'@g", 'setup.py'])
         shutil.move('placeholder', target_package)
         subprocess.run(['python3', 'setup.py', 'sdist', 'upload', '-r', pypi_repo_name])

