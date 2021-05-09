@@ -1,4 +1,4 @@
-name: Dependency hijacking attack
+name: Dependency hijacking attack (automatic requirements)
 description: Execute dependency hijacking attack using exfiltrated requirements.txt
 atomic_ordering:
 - c623fb22-808a-4b2b-a193-64f2307568c9

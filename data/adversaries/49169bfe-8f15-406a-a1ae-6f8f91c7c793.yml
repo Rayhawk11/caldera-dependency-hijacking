@@ -1,0 +1,6 @@
+name: Dependency hijacking attack (manual requirements)
+description: Execute dependency hijacking attack using manually provided aggregated_requirements.txt
+atomic_ordering:
+- 1a05db07-8fb0-4ea1-970c-f51cf8ce7e94
+id: 49169bfe-8f15-406a-a1ae-6f8f91c7c793
+objective: 495a9828-cab1-44dd-a0ca-66e58177d8cc
